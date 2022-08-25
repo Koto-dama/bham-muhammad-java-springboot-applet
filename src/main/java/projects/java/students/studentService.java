@@ -17,4 +17,10 @@ public class studentService {
     public List<Student> getStudent() {
         return repo.findAll();
     }
+
+    public static void addStudent(Student newStudent){
+
+        System.out.print(newStudent);
+
+    }
 }
