@@ -28,6 +28,6 @@ public class studentController {
 
     @DeleteMapping(path="{studentID}")
     public void removeStudent(@PathVariable("studentID")long id){
-
+        service.deleteStudent(id);
     }
 }

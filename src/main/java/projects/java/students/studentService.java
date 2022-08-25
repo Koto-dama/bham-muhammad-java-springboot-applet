@@ -27,6 +27,14 @@ public class studentService {
         }else {
             repo.save(newStudent);
         }
+    }
+
+    public void deleteStudent(long id){
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+        } else {
+            throw new IllegalStateException("Student with ID " + id + " does not exist");
+        }
 
     }
 }
