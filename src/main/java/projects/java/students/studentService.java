@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class studentService {
@@ -17,10 +18,15 @@ public class studentService {
     public List<Student> getStudent() {
         return repo.findAll();
     }
+    public void addStudent(Student newStudent){
 
-    public static void addStudent(Student newStudent){
+        Optional<Student> searchByEmail = repo.findStudentByEmail(newStudent.getEmail());
 
-        System.out.print(newStudent);
+        if (searchByEmail.isPresent()){
+            throw new IllegalStateException("Account with email already exists");
+        }else {
+            repo.save(newStudent);
+        }
 
     }
 }
